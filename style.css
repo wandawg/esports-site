@@ -164,3 +164,43 @@ nav a:hover {
   color: #ff0080;
   text-shadow: 0 0 5px #ff0080, 0 0 10px #ff0080, 0 0 20px #ff0080;
 }
+
+/* Teams Page Cards */
+.team-card {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #00aaff;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 15px;
+    border: 2px solid #00aaff;
+    transition: transform 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px #00aaff, 0 0 40px #ff00ff;
+}
+
+.team-card:hover img {
+    transform: scale(1.05);
+}
+
+.team-info h2 {
+    margin: 0;
+    color: #00f7ff;
+}
+
+.team-info p {
+    color: #ddd;
+}
