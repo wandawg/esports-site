@@ -27,26 +27,28 @@
             text-shadow: 0 0 8px #ff00ff;
         }
         .team-card {
-            display: flex;
-            align-items: center;
-            margin: 20px 0;
-            padding: 15px;
-            background: rgba(0,0,0,0.7);
-            border: 1px solid #ff00ff;
-            border-radius: 8px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .team-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 15px #ff00ff;
-        }
+    background: #1a1a1a;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 10px #00ffff33;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
         .team-card img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin-right: 15px;
-            border: 2px solid #ff00ff;
-        }
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+        .team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px #00ffff, 0 0 40px #ff00ff;
+}
+
+        .team-card:hover img {
+    transform: scale(1.05);
+}
         .team-info h2 {
             margin: 0;
             color: #00f7ff;
