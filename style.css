@@ -91,32 +91,47 @@ footer {
     margin-top: 50px;
 }
 
-/* Navigation Bar Styling */
+/* Base Nav Style */
 nav {
   display: flex;
   justify-content: center;
   background-color: #0d0d0d;
   padding: 15px 0;
-  box-shadow: 0 0 15px rgba(0, 255, 170, 0.3);
 }
 
 nav a {
-  color: #00ffcc;
   text-decoration: none;
   font-size: 1.1rem;
   font-weight: bold;
   margin: 0 20px;
   padding: 10px 20px;
-  border: 2px solid #00ffcc;
   border-radius: 8px;
+  border: 2px solid currentColor;
   transition: all 0.3s ease;
+}
+
+/* Glow Colors */
+.nav-home a {
+  color: #00ffcc;
   text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc;
+}
+.nav-tournaments a {
+  color: #a100ff;
+  text-shadow: 0 0 5px #a100ff, 0 0 10px #a100ff;
+}
+.nav-teams a {
+  color: #00aaff;
+  text-shadow: 0 0 5px #00aaff, 0 0 10px #00aaff;
+}
+.nav-contact a {
+  color: #ff0080;
+  text-shadow: 0 0 5px #ff0080, 0 0 10px #ff0080;
 }
 
 /* Hover Effect */
 nav a:hover {
-  background-color: #00ffcc;
+  background-color: currentColor;
   color: #0d0d0d;
-  box-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc;
+  box-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
   transform: scale(1.05);
 }
