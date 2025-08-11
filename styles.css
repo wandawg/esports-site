@@ -1,8 +1,14 @@
-/* General Styles */
-body {
+/* Reset */
+* {
     margin: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #0d0d0d;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0a0a0a;
     color: white;
 }
 
@@ -11,21 +17,24 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #111;
     padding: 15px 30px;
-    background-color: #1a1a1a;
-    box-shadow: 0 2px 5px rgba(0, 255, 234, 0.4);
+    border-bottom: 2px solid #0ff;
 }
 
 nav .logo {
     font-size: 1.5em;
-    color: #00ffea;
     font-weight: bold;
+    color: #0ff;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 20px;
+}
+
+nav ul li {
+    margin-left: 20px;
 }
 
 nav ul li a {
@@ -35,54 +44,49 @@ nav ul li a {
     transition: 0.3s;
 }
 
-nav ul li a:hover {
-    color: #00ffea;
+nav ul li a:hover,
+nav ul li a.active {
+    color: #0ff;
 }
 
 /* Hero Section */
 .hero {
     text-align: center;
     padding: 100px 20px;
-    background: linear-gradient(135deg, #111, #222);
+    background: linear-gradient(to right, #0ff2, #80f2);
 }
 
 .hero h1 {
-    font-size: 2.5em;
-    color: #00ffea;
+    font-size: 3em;
+    color: #0ff;
 }
 
 .hero p {
     font-size: 1.2em;
-    color: #ccc;
+    margin: 10px 0;
 }
 
 .btn {
     display: inline-block;
-    margin-top: 20px;
+    background-color: #0ff;
+    color: black;
     padding: 10px 20px;
-    background-color: #00ffea;
-    color: #111;
+    margin-top: 15px;
     border-radius: 5px;
     text-decoration: none;
-    font-weight: bold;
     transition: 0.3s;
 }
 
 .btn:hover {
-    background-color: #00d4bf;
-}
-
-/* Content Section */
-.content {
-    text-align: center;
-    padding: 50px 20px;
+    background-color: #ff00ea;
+    color: white;
 }
 
 /* Footer */
 footer {
-    background-color: #1a1a1a;
+    background-color: #111;
     text-align: center;
-    padding: 15px;
-    font-size: 0.9em;
-    color: #777;
+    padding: 10px;
+    border-top: 2px solid #0ff;
+    margin-top: 50px;
 }
