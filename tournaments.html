@@ -3,74 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tournaments - WANDAWG</title>
+    <title>Tournaments | WANDAWG</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            animation: fadeIn 0.8s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .content {
-            max-width: 900px;
-            margin: 50px auto;
-            padding: 20px;
-            background: rgba(0,0,0,0.6);
-            border-radius: 12px;
-            box-shadow: 0 0 20px #00f7ff;
-        }
-        h1 {
-            text-align: center;
-            color: #00f7ff;
-            text-shadow: 0 0 8px #00f7ff;
-        }
-        .tournament-card {
-            margin: 20px 0;
-            padding: 15px;
-            background: rgba(0,0,0,0.7);
-            border: 1px solid #00f7ff;
-            border-radius: 8px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .tournament-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 15px #00f7ff;
-        }
-        .tournament-card h2 {
-            margin-bottom: 8px;
-            color: #ff00ff;
-        }
-        .tournament-card p {
-            color: #ddd;
-        }
-    </style>
 </head>
 <body>
+
+    <!-- Modal -->
+<div id="tournamentModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+
+        <img id="modalImage" src="" alt="Tournament Banner" class="modal-banner">
+
+        <h2 id="modalTitle"></h2>
+        <p id="modalDate"></p>
+        <p id="modalLocation"></p>
+        <p id="modalPrize"></p>
+        <p id="modalFee"></p>
+        <p id="modalDescription"></p>
+
+        <h3>Register Now</h3>
+        <form id="registrationForm">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <input type="text" placeholder="Team Name" required>
+            <textarea placeholder="Teammates' Names" required></textarea>
+            <button type="submit">Proceed to Payment</button>
+        </form>
+    </div>
+</div>
+
+    <!-- Navigation -->
     <header>
-        <nav class="nav-tournaments">
-  <a href="index.html">Home</a>
-  <a href="tournaments.html">Tournaments</a>
-  <a href="teams.html">Teams</a>
-  <a href="contact.html">Contact</a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="tournaments.html" class="active">Tournaments</a>
+            <a href="teams.html">Teams</a>
+            <a href="contact.html">Contact</a>
         </nav>
     </header>
 
-    <div class="content">
-        <h1>Upcoming Tournaments</h1>
+    <main>
+        <h1 class="page-title">Upcoming Tournaments</h1>
 
-        <div class="tournament-card">
-            <h2>Natural Disaster Survival</h2>
-            <p>Date: October 25, 2025</p>
-            <p>Prize Pool: RM100</p>
+        <!-- Tournament Cards -->
+        <div class="tournament-container">
+            <div class="tournament-card"
+                 data-title="Nature’s Wrath"
+                 data-date="12 Sept 2025"
+                 data-game="Natural Disaster Survival"
+                 data-prize="RM 5,000"
+                 data-fee="RM 50"
+                 data-description="A thrilling surviving natural disasters experience. Will you be the winner?">
+                <h3>Nature’s Wrath</h3>
+                <p>Click to view details</p>
+            </div>
+
+            <div class="tournament-card"
+                 data-title="The Ink Trial"
+                 data-date="20 Sept 2025"
+                 data-game="Ink Game"
+                 data-prize="RM 3,000"
+                 data-fee="RM 30"
+                 data-description="Survive with your teammate. Will you continue the game or rebel?">
+                <h3>The Ink Trial</h3>
+                <p>Click to view details</p>
+            </div>
+
+            <div class="tournament-card"
+                 data-title="Ring Kings"
+                 data-date="5 Oct 2025"
+                 data-game="untitled boxing game 🥊"
+                 data-prize="RM 4,000"
+                 data-fee="RM 40"
+                 data-description="Fight your way up and become the king. Do you have what it takes?">
+                <h3>Ring Kings</h3>
+                <p>Click to view details</p>
+            </div>
         </div>
+    </main>
 
-        <div class="tournament-card">
-            <h2>Ink Game</h2>
-            <p>Date: November 27, 2025</p>
-            <p>Prize Pool: RM120</p>
+    <!-- Modal -->
+    <div id="tournamentModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDate"></p>
+            <p id="modalLocation"></p>
+            <p id="modalPrize"></p>
+            <p id="modalFee"></p>
+            <p id="modalDescription"></p>
+
+            <h3>Register Now</h3>
+            <form id="registrationForm">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <input type="text" placeholder="Team Name" required>
+                <textarea placeholder="Teammates' Names" required></textarea>
+                <button type="submit">Proceed to Payment</button>
+            </form>
         </div>
     </div>
+
+    <script>
+        // Get modal & elements
+        const modal = document.getElementById("tournamentModal");
+        const closeBtn = document.querySelector(".close-btn");
+
+        const modalTitle = document.getElementById("modalTitle");
+        const modalDate = document.getElementById("modalDate");
+        const modalLocation = document.getElementById("modalLocation");
+        const modalPrize = document.getElementById("modalPrize");
+        const modalFee = document.getElementById("modalFee");
+        const modalDescription = document.getElementById("modalDescription");
+
+        // Add event listeners to tournament cards
+        document.querySelectorAll(".tournament-card").forEach(card => {
+            card.addEventListener("click", () => {
+                modalTitle.textContent = card.dataset.title;
+                modalDate.textContent = "📅 Date: " + card.dataset.date;
+                modalLocation.textContent = "📍 Location: " + card.dataset.location;
+                modalPrize.textContent = "🏆 Prize: " + card.dataset.prize;
+                modalFee.textContent = "💵 Entry Fee: " + card.dataset.fee;
+                modalDescription.textContent = card.dataset.description;
+                modal.style.display = "block";
+            });
+        });
+
+        // Close modal
+        closeBtn.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+        window.addEventListener("click", (e) => {
+            if (e.target === modal) modal.style.display = "none";
+        });
+    </script>
+    
 </body>
+
 </html>
