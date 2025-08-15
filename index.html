@@ -6,8 +6,29 @@
     <title>WanDawg - Home</title>
     <link rel="stylesheet" href="style.css">
     
-        <!-- Website Icon -->
+    <!-- Website Icon -->
     <link rel="icon" type="image/png" href="favicon.png">
+
+    <style>
+        /* Sticky footer layout */
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        footer {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -18,16 +39,18 @@
         </nav>
     </header>
 
-    <section class="hero">
-        <video autoplay muted loop playsinline poster="promo-thumbnail.jpg">
-            <source src="promo-video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="hero-text">
-            <h1>Welcome to WanDawg Esports</h1>
-            <p>Join epic Valorant tournaments and dominate the battlefield!</p>
-        </div>
-    </section>
+    <main>
+        <section class="hero">
+            <video autoplay muted loop playsinline poster="promo-thumbnail.jpg">
+                <source src="promo-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="hero-text">
+                <h1>Welcome to WanDawg Esports</h1>
+                <p>Join epic Valorant tournaments and dominate the battlefield!</p>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <p>© 2025 WanDawg Esports. All rights reserved.</p>
