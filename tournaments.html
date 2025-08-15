@@ -3,144 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tournaments | WANDAWG</title>
+    <title>WANDAWG - Tournaments</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- Modal -->
-<div id="tournamentModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn">&times;</span>
-
-        <img id="modalImage" src="" alt="Tournament Banner" class="modal-banner">
-
-        <h2 id="modalTitle"></h2>
-        <p id="modalDate"></p>
-        <p id="modalLocation"></p>
-        <p id="modalPrize"></p>
-        <p id="modalFee"></p>
-        <p id="modalDescription"></p>
-
-        <h3>Register Now</h3>
-        <form id="registrationForm">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Email Address" required>
-            <input type="text" placeholder="Team Name" required>
-            <textarea placeholder="Teammates' Names" required></textarea>
-            <button type="submit">Proceed to Payment</button>
-        </form>
-    </div>
-</div>
-
-    <!-- Navigation -->
     <header>
+        <div class="logo">WANDAWG</div>
         <nav>
             <a href="index.html">Home</a>
             <a href="tournaments.html" class="active">Tournaments</a>
-            <a href="teams.html">Teams</a>
-            <a href="contact.html">Contact</a>
         </nav>
     </header>
 
-    <main>
-        <h1 class="page-title">Upcoming Tournaments</h1>
-
-        <!-- Tournament Cards -->
-        <div class="tournament-container">
-            <div class="tournament-card"
-                 data-title="Nature’s Wrath"
-                 data-date="12 Sept 2025"
-                 data-game="Natural Disaster Survival"
-                 data-prize="RM 5,000"
-                 data-fee="RM 50"
-                 data-description="A thrilling surviving natural disasters experience. Will you be the winner?">
-                <h3>Nature’s Wrath</h3>
-                <p>Click to view details</p>
+    <section class="tournaments">
+        <h2>Upcoming Tournaments</h2>
+        <div class="card-container">
+            <div class="tournament-card" data-modal="modal1">
+                <img src="images/tournament1.jpg" alt="Tournament 1">
+                <h3>Valorant Clash 2025</h3>
+                <p>Prize Pool: RM 2,000</p>
             </div>
-
-            <div class="tournament-card"
-                 data-title="The Ink Trial"
-                 data-date="20 Sept 2025"
-                 data-game="Ink Game"
-                 data-prize="RM 3,000"
-                 data-fee="RM 30"
-                 data-description="Survive with your teammate. Will you continue the game or rebel?">
-                <h3>The Ink Trial</h3>
-                <p>Click to view details</p>
-            </div>
-
-            <div class="tournament-card"
-                 data-title="Ring Kings"
-                 data-date="5 Oct 2025"
-                 data-game="untitled boxing game 🥊"
-                 data-prize="RM 4,000"
-                 data-fee="RM 40"
-                 data-description="Fight your way up and become the king. Do you have what it takes?">
-                <h3>Ring Kings</h3>
-                <p>Click to view details</p>
+            <div class="tournament-card" data-modal="modal2">
+                <img src="images/tournament2.jpg" alt="Tournament 2">
+                <h3>Neon Showdown</h3>
+                <p>Prize Pool: RM 1,500</p>
             </div>
         </div>
-    </main>
+    </section>
 
-    <!-- Modal -->
-    <div id="tournamentModal" class="modal">
+    <!-- Tournament Modal 1 -->
+    <div id="modal1" class="modal">
         <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h2 id="modalTitle"></h2>
-            <p id="modalDate"></p>
-            <p id="modalLocation"></p>
-            <p id="modalPrize"></p>
-            <p id="modalFee"></p>
-            <p id="modalDescription"></p>
-
-            <h3>Register Now</h3>
-            <form id="registrationForm">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Email Address" required>
-                <input type="text" placeholder="Team Name" required>
-                <textarea placeholder="Teammates' Names" required></textarea>
-                <button type="submit">Proceed to Payment</button>
-            </form>
+            <span class="close" data-close="modal1">&times;</span>
+            <h2>Valorant Clash 2025</h2>
+            <p><strong>Prize Pool:</strong> RM 2,000</p>
+            <p><strong>Entry Fee:</strong> RM 50/team</p>
+            <p><strong>Date:</strong> 25th August 2025</p>
+            <h3>Rules & Regulations</h3>
+            <p>Standard Valorant tournament rules apply. All players must be 13+...</p>
+            <a href="https://forms.gle/example" class="register-btn" target="_blank">Register Now</a>
         </div>
     </div>
 
-    <script>
-        // Get modal & elements
-        const modal = document.getElementById("tournamentModal");
-        const closeBtn = document.querySelector(".close-btn");
+    <!-- Tournament Modal 2 -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" data-close="modal2">&times;</span>
+            <h2>Neon Showdown</h2>
+            <p><strong>Prize Pool:</strong> RM 1,500</p>
+            <p><strong>Entry Fee:</strong> RM 40/team</p>
+            <p><strong>Date:</strong> 10th September 2025</p>
+            <h3>Rules & Regulations</h3>
+            <p>Standard Valorant tournament rules apply. All players must be 13+...</p>
+            <a href="https://forms.gle/example" class="register-btn" target="_blank">Register Now</a>
+        </div>
+    </div>
 
-        const modalTitle = document.getElementById("modalTitle");
-        const modalDate = document.getElementById("modalDate");
-        const modalLocation = document.getElementById("modalLocation");
-        const modalPrize = document.getElementById("modalPrize");
-        const modalFee = document.getElementById("modalFee");
-        const modalDescription = document.getElementById("modalDescription");
-
-        // Add event listeners to tournament cards
-        document.querySelectorAll(".tournament-card").forEach(card => {
-            card.addEventListener("click", () => {
-                modalTitle.textContent = card.dataset.title;
-                modalDate.textContent = "📅 Date: " + card.dataset.date;
-                modalLocation.textContent = "📍 Location: " + card.dataset.location;
-                modalPrize.textContent = "🏆 Prize: " + card.dataset.prize;
-                modalFee.textContent = "💵 Entry Fee: " + card.dataset.fee;
-                modalDescription.textContent = card.dataset.description;
-                modal.style.display = "block";
-            });
-        });
-
-        // Close modal
-        closeBtn.addEventListener("click", () => {
-            modal.style.display = "none";
-        });
-        window.addEventListener("click", (e) => {
-            if (e.target === modal) modal.style.display = "none";
-        });
-    </script>
+    <footer>
+        <p>© 2025 WANDAWG Esports. All rights reserved.</p>
+    </footer>
 
     <script src="script.js"></script>
-
 </body>
-
 </html>
