@@ -8,6 +8,97 @@
 
   <!-- Website Icon -->
   <link rel="icon" type="image/png" href="favicon.png">
+
+  <style>
+    .contact {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-size: 2em;
+      margin-bottom: 10px;
+      color: #ff00ff;
+    }
+
+    .contact p {
+      margin-bottom: 30px;
+      color: #ddd;
+    }
+
+    .contact-form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      background: #1a1a1a;
+      color: #fff;
+      box-shadow: 0 0 10px #ff00ff55;
+      resize: none;
+      transition: 0.2s;
+    }
+
+    .contact-form textarea {
+      height: 120px;
+    }
+
+    .contact-form button {
+      background: #ff00ff;
+      color: #000;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 10px #ff00ff;
+      transition: 0.3s;
+    }
+
+    .contact-form button:hover {
+      box-shadow: 0 0 20px #ff00ff;
+      transform: translateY(-2px);
+    }
+
+    /* Success/Error messages */
+    .status-message {
+      margin-top: 15px;
+      font-weight: bold;
+      opacity: 1;
+      transition: opacity 1s ease-out;
+      display: none;
+    }
+
+    .status-success {
+      color: #00ff88;
+    }
+
+    .status-error {
+      color: #ff4444;
+    }
+
+    /* Shake animation for invalid input */
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-8px); }
+      40%, 80% { transform: translateX(8px); }
+    }
+
+    .shake {
+      animation: shake 0.4s;
+      border: 2px solid #ff4444;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -23,16 +114,76 @@
     <h2>📩 Contact Us</h2>
     <p>Have questions, feedback, or need support? Fill out the form below and we’ll get back to you soon!</p>
     
-    <form class="contact-form" action="https://formspree.io/f/mblawrpw" method="POST">
+    <form class="contact-form" id="contactForm" action="https://formspree.io/f/mblawrpw" method="POST">
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
       <textarea name="message" placeholder="Your Message" required></textarea>
       <button type="submit">Send Message</button>
+      <p id="formStatus" class="status-message"></p>
     </form>
   </section>
 
   <footer>
     <p>© 2025 WanDawg Esports. All rights reserved.</p>
   </footer>
+
+  <script>
+    const form = document.getElementById("contactForm");
+    const status = document.getElementById("formStatus");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const inputs = form.querySelectorAll("input, textarea");
+      let valid = true;
+
+      // Validate inputs
+      inputs.forEach(input => {
+        if (!input.value.trim()) {
+          input.classList.add("shake");
+          valid = false;
+          setTimeout(() => input.classList.remove("shake"), 500);
+        }
+      });
+
+      if (!valid) {
+        showMessage("⚠️ Please fill in all fields.", "status-error");
+        return;
+      }
+
+      const data = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          showMessage("✅ Your message has been sent successfully!", "status-success");
+          form.reset();
+        } else {
+          showMessage("❌ Oops! Something went wrong. Please try again.", "status-error");
+        }
+      } catch (error) {
+        showMessage("⚠️ Network error. Please check your connection.", "status-error");
+      }
+    });
+
+    function showMessage(message, type) {
+      status.textContent = message;
+      status.className = "status-message " + type;
+      status.style.display = "block";
+      status.style.opacity = "1";
+
+      // Fade out after 5 seconds
+      setTimeout(() => {
+        status.style.opacity = "0";
+        setTimeout(() => {
+          status.style.display = "none";
+        }, 1000);
+      }, 5000);
+    }
+  </script>
 </body>
 </html>
