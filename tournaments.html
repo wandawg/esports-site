@@ -57,6 +57,50 @@
         .content li {
             margin-bottom: 8px;
         }
+
+        /* ===== Modal Fix ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* allow scroll */
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-content {
+            background-color: #111;
+            margin: 40px auto;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #ff00ff;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh; /* limit height */
+            overflow-y: auto; /* scroll inside if needed */
+            box-shadow: 0 0 20px #ff00ff;
+        }
+
+        .modal-content iframe {
+            width: 100%;
+            height: 400px; /* responsive height */
+            border: none;
+        }
+
+        .close {
+            color: #ff00ff;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -117,12 +161,9 @@
         <p><strong>Entry Fee:</strong> RM 50/team</p>
         <p><strong>Organiser:</strong> Valorant E-Sports Malaysia</p>
 
-        <!-- Prefilled Google Form -->
         <iframe 
-          src="https://docs.google.com/forms/d/e/1FAIpQLSfeYGGXyNk6a5n9bamWe3Yn1ej37VBMvKBVXIQkv1EkRRXtTQ/viewform?usp=pp_url&entry.509547201=Neon+Showdown+S1&embedded=true" 
-          width="100%" 
-          height="600" 
-          frameborder="0">Loading…</iframe>
+          src="https://docs.google.com/forms/d/e/1FAIpQLSfeYGGXyNk6a5n9bamWe3Yn1ej37VBMvKBVXIQkv1EkRRXtTQ/viewform?usp=pp_url&entry.509547201=Neon+Showdown+S1&embedded=true">
+        </iframe>
       </div>
     </div>
 
@@ -135,12 +176,9 @@
         <p><strong>Entry Fee:</strong> RM 40/team</p>
         <p><strong>Organiser:</strong> Valorant E-Sports Malaysia</p>
 
-        <!-- Prefilled Google Form -->
         <iframe 
-          src="https://docs.google.com/forms/d/e/1FAIpQLSfeYGGXyNk6a5n9bamWe3Yn1ej37VBMvKBVXIQkv1EkRRXtTQ/viewform?usp=pp_url&entry.509547201=Neon+Showdown+S2&embedded=true" 
-          width="100%" 
-          height="600" 
-          frameborder="0">Loading…</iframe>
+          src="https://docs.google.com/forms/d/e/1FAIpQLSfeYGGXyNk6a5n9bamWe3Yn1ej37VBMvKBVXIQkv1EkRRXtTQ/viewform?usp=pp_url&entry.509547201=Neon+Showdown+S2&embedded=true">
+        </iframe>
       </div>
     </div>
 
