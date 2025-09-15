@@ -103,7 +103,9 @@
 <body>
   <header>
     <div class="logo">WanDawg</div>
-    <nav>
+    <!-- Hamburger Menu -->
+    <div class="menu-toggle" id="menu-toggle">☰</div>
+    <nav id="nav-links">
       <a href="index.html">Home</a>
       <a href="tournaments.html">Tournaments</a>
       <a href="contact.html" class="active">Contact Us</a>
@@ -128,6 +130,9 @@
   </footer>
 
   <script>
+    // ======================
+    // Contact form handling
+    // ======================
     const form = document.getElementById("contactForm");
     const status = document.getElementById("formStatus");
 
@@ -183,6 +188,41 @@
           status.style.display = "none";
         }, 1000);
       }, 5000);
+    }
+
+    // ======================
+    // Collapsible Logic (safe for all pages)
+    // ======================
+    const coll = document.querySelectorAll(".collapsible");
+    coll.forEach(button => {
+      button.addEventListener("click", function () {
+        this.classList.toggle("active");
+        const content = this.nextElementSibling;
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    });
+
+    // ======================
+    // Mobile Menu (Hamburger)
+    // ======================
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+      });
+
+      // Optional: close menu when a link is clicked
+      navLinks.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("show");
+        });
+      });
     }
   </script>
 </body>
