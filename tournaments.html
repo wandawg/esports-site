@@ -106,7 +106,8 @@
 <body>
     <header>
         <div class="logo">WanDawg</div>
-        <nav>
+        <div class="menu-toggle" id="menu-toggle">☰</div>
+        <nav id="nav-links">
             <a href="index.html">Home</a>
             <a href="tournaments.html" class="active">Tournaments</a>
             <a href="contact.html">Contact Us</a>
@@ -190,20 +191,41 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        // Collapsible logic
-        const coll = document.querySelectorAll(".collapsible");
-        coll.forEach(button => {
-            button.addEventListener("click", function() {
-                this.classList.toggle("active");
-                const content = this.nextElementSibling;
-                if (content.style.maxHeight) {
-                    content.style.maxHeight = null;
-                } else {
-                    content.style.maxHeight = content.scrollHeight + "px";
-                }
+ <script>
+    // ======================
+    // Collapsible Logic
+    // ======================
+    const coll = document.querySelectorAll(".collapsible");
+    coll.forEach(button => {
+        button.addEventListener("click", function () {
+            this.classList.toggle("active");
+            const content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    });
+
+    // ======================
+    // Mobile Menu (Hamburger)
+    // ======================
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener("click", () => {
+            navLinks.classList.toggle("show");
+        });
+
+        // Optional: close menu when a link is clicked
+        navLinks.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("show");
             });
         });
-    </script>
+    }
+</script>
 </body>
 </html>
